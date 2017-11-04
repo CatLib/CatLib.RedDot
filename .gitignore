@@ -1,0 +1,7 @@
+.vs/
+build/
+src/CatLib.RedDot/bin/
+src/CatLib.RedDot/obj/
+src/CatLib.RedDot.Tests/bin/
+src/CatLib.RedDot.Tests/obj/
+*.nupkg

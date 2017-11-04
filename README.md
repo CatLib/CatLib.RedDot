@@ -1,2 +1,5 @@
 # CatLib.RedDot
-CatLib Red Dot Component
+
+> 这个项目正在开发中... 
+
+> Please wait for the project to be completed

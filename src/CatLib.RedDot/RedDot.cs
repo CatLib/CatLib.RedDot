@@ -14,7 +14,7 @@ namespace CatLib.RedDot
     /// <summary>
     /// Red dot status
     /// </summary>
-    public class Dot
+    public class RedDot
     {
 
     }

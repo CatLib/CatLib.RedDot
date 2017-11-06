@@ -11,7 +11,10 @@
 
 namespace CatLib.RedDot
 {
-    class RedDotManager
+    /// <summary>
+    /// Red dot manager
+    /// </summary>
+    public class RedDotManager
     {
     }
 }

@@ -9,25 +9,12 @@
  * Document: http://catlib.io/
  */
 
-using System.Collections.Generic;
-
 namespace CatLib.RedDot
 {
     /// <summary>
-    /// Red dot
+    /// Red dot interface
     /// </summary>
-    public class RedDot : IRedDot
+    public interface IRedDot
     {
-        /// <summary>
-        /// Parent dot
-        /// </summary>
-        private IRedDot parent;
-
-        /// <summary>
-        /// Children dot
-        /// </summary>
-        private List<IRedDot> children;
-
-
     }
 }

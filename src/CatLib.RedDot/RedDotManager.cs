@@ -16,5 +16,6 @@ namespace CatLib.RedDot
     /// </summary>
     public class RedDotManager
     {
+
     }
 }

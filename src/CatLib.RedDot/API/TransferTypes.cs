@@ -12,28 +12,23 @@
 namespace CatLib.API.RedDot
 {
     /// <summary>
-    /// Red dot types
+    /// Red Dot Inheritance relationship
     /// </summary>
-    public enum RedDotTypes
+    public enum TransferTypes
     {
         /// <summary>
-        /// Normal Red dot , just red dot no tip
+        /// Through the callback to decide whether to pass
         /// </summary>
-        Normal = 40,
+        Customize = 0,
 
         /// <summary>
-        /// Red dot with numbers
+        /// Does not pass the state to the parent class 
         /// </summary>
-        Numeric = 30,
+        NotInherit = 10,
 
         /// <summary>
-        /// Red dot with texts
+        /// Pass the current state to the parent class
         /// </summary>
-        Text = 20,
-
-        /// <summary>
-        /// Customize red dot , For different shapes of red dots
-        /// </summary>
-        Customize = 10
+        Inherit = 20,
     }
 }

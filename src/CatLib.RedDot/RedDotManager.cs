@@ -16,6 +16,15 @@ namespace CatLib.RedDot
     /// </summary>
     public class RedDotManager
     {
-
+        /// <summary>
+        /// Get the red dot with path
+        /// <para>Path support use dots to flatten a multi-dimensional associative array</para>
+        /// </summary>
+        /// <param name="path"></param>
+        public IRedDot Get(string path)
+        {
+        
+            return null;
+        }
     }
 }

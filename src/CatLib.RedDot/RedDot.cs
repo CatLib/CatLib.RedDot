@@ -11,7 +11,6 @@
 
 using CatLib.API.RedDot;
 using System;
-using System.Collections.Generic;
 
 namespace CatLib.RedDot
 {
@@ -23,12 +22,12 @@ namespace CatLib.RedDot
         /// <summary>
         /// Parent dot
         /// </summary>
-        private IRedDot parent;
+        private RedDot parent;
 
         /// <summary>
         /// Children dot
         /// </summary>
-        private List<IRedDot> children;
+        private SortSet<RedDot, int> children;
 
         /// <summary>
         ///  Red Dot Inheritance relationship
@@ -51,9 +50,14 @@ namespace CatLib.RedDot
         private int cacheCount;
 
         /// <summary>
+        /// The main state is taken from master children
+        /// </summary>
+        private RedDot masterChildren;
+
+        /// <summary>
         /// Triggered when the red dot status changed
         /// </summary>
-        private event Action<IRedDot> onRedDotStatusChanage;
+        private event Action<RedDot> onRedDotStatusChanage;
 
         /// <summary>
         /// A processor is set up to handle whether red dots should be passed to the parent
@@ -71,6 +75,23 @@ namespace CatLib.RedDot
         /// <param name="priority"></param>
         public void SetCustomizeStyle(string style, int priority)
         {
+        }
+
+        /// <summary>
+        /// Active current red dot
+        /// </summary>
+        /// <param name="isActive">the bool said active status</param>
+        public void Active(bool isActive)
+        {
+            
+        }
+
+        /// <summary>
+        /// Recache the all status
+        /// </summary>
+        protected void Recache()
+        {
+
         }
     }
 }

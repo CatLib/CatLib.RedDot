@@ -12,9 +12,9 @@
 namespace CatLib.API.RedDot
 {
     /// <summary>
-    /// Red dot types
+    /// How does red dot style 
     /// </summary>
-    public enum RedDotTypes
+    public enum StyleTypes
     {
         /// <summary>
         /// Normal Red dot , just red dot no tip

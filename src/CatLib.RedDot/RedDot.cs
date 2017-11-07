@@ -30,7 +30,7 @@ namespace CatLib.RedDot
         private SortSet<RedDot, int> children;
 
         /// <summary>
-        ///  Red Dot Inheritance relationship
+        ///  Red dot Inheritance relationship
         /// </summary>
         private TransferTypes transferType;
 

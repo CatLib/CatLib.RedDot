@@ -16,7 +16,7 @@ namespace CatLib.RedDot.Node
     /// <summary>
     /// Parent node
     /// </summary>
-    public class ParentNode : IRedDot
+    public class ParentNode
     {
         /// <summary>
         /// Parent node

@@ -51,7 +51,16 @@ namespace CatLib.RedDot
         /// <param name="path"></param>
         public IRedDot Make(string path)
         {
-            return null;
+            var arrayPath = ToArrayPath(path);
+            var key = Arr.Shift(ref arrayPath);
+
+            BaseNode result;
+            if(!mapping.TryGetValue(key, out result))
+            {
+
+            }
+
+            return result.Make(arrayPath);
         }
 
         /// <summary>
@@ -68,6 +77,11 @@ namespace CatLib.RedDot
             }
         }
 
+        private BaseNode MakeNode()
+        {
+            return null;
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -77,14 +91,6 @@ namespace CatLib.RedDot
         {
             var arrayPath = path.Split('.', '/');
             return arrayPath;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        private IRedDot MakeNode(NodeTypes type)
-        {
-            return null;
         }
     }
 }

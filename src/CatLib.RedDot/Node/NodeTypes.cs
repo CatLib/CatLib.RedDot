@@ -9,12 +9,21 @@
  * Document: http://catlib.io/
  */
 
-namespace CatLib.RedDot
+namespace CatLib.RedDot.Node
 {
     /// <summary>
-    /// Red dot interface
+    /// Node Types
     /// </summary>
-    public interface IRedDot
+    public enum NodeTypes
     {
+        /// <summary>
+        /// Parent node can accommodate de entity
+        /// </summary>
+        Parent,
+
+        /// <summary>
+        /// Unable to mount child node again
+        /// </summary>
+        Entity
     }
 }

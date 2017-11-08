@@ -9,13 +9,15 @@
  * Document: http://catlib.io/
  */
 
-namespace CatLib.RedDot
+using CatLib.API.RedDot;
+
+namespace CatLib.RedDot.Node
 {
     /// <summary>
-    /// Parent node
+    /// Base of the node
     /// </summary>
-    public class ParentNode : IRedDot
+    public abstract class BaseNode : IRedDot
     {
-        private ParentNode node;
+
     }
 }

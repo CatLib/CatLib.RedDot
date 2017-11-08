@@ -12,7 +12,7 @@
 using CatLib.API.RedDot;
 using System;
 
-namespace CatLib.RedDot
+namespace CatLib.RedDot.Node
 {
     /// <summary>
     /// Red dot
@@ -22,12 +22,7 @@ namespace CatLib.RedDot
         /// <summary>
         /// Parent dot
         /// </summary>
-        private RedDot parent;
-
-        /// <summary>
-        /// Children dot
-        /// </summary>
-        private SortSet<RedDot, int> children;
+        private ParentNode parent;
 
         /// <summary>
         ///  Red dot Inheritance relationship

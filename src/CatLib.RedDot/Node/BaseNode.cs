@@ -49,6 +49,30 @@ namespace CatLib.RedDot.Node
         }
 
         /// <summary>
+        /// Clear the number of events
+        /// </summary>
+        public virtual void Clear()
+        {
+            Counted(0);
+        }
+
+        /// <summary>
+        /// Set the number of events
+        /// </summary>
+        /// <param name="count">Number of events</param>
+        public abstract void Counted(int count);
+
+        /// <summary>
+        /// Increment the number of events
+        /// </summary>
+        public abstract void Incr();
+
+        /// <summary>
+        /// Decrement the number of events
+        /// </summary>
+        public abstract void Decr();
+
+        /// <summary>
         /// Get or Make node with path
         /// </summary>
         /// <param name="path"></param>

@@ -21,7 +21,7 @@ namespace CatLib.RedDot.Node
         /// <summary>
         /// Number of events
         /// </summary>
-        private int count = 0;
+        private int count;
 
         /// <summary>
         /// Number of events
@@ -46,15 +46,15 @@ namespace CatLib.RedDot.Node
         /// Set the number of events
         /// </summary>
         /// <param name="count">Number of events</param>
-        public void Counted(int count)
+        public override void Counted(int count)
         {
-            count = Math.Max(0, count);
+            this.count = Math.Max(0, count);
         }
 
         /// <summary>
         /// Increment the number of events
         /// </summary>
-        public void Incr()
+        public override void Incr()
         {
             Counted(Count + 1);
         }
@@ -62,7 +62,7 @@ namespace CatLib.RedDot.Node
         /// <summary>
         /// Decrement the number of events
         /// </summary>
-        public void Decr()
+        public override void Decr()
         {
             Counted(Count - 1);
         }

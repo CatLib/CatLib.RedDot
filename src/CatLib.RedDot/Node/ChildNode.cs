@@ -9,21 +9,57 @@
  * Document: http://catlib.io/
  */
 
-using CatLib.API.RedDot;
 using System;
 
 namespace CatLib.RedDot.Node
 {
     /// <summary>
-    /// Red dot
+    /// Child Node
     /// </summary>
-    public class RedDot
+    public class ChildNode : BaseNode
     {
         /// <summary>
-        /// Parent dot
+        /// Number of events
         /// </summary>
-        private ParentNode parent;
+        private int count;
 
+        /// <summary>
+        /// Number of events
+        /// </summary>
+        public override int Count
+        {
+            get
+            {
+                return count;
+            }
+        }
+
+        /// <summary>
+        /// Set the number of events
+        /// </summary>
+        /// <param name="count">number of events</param>
+        public void Counted(int count)
+        {
+            count = Math.Max(0, count);
+        }
+
+        /// <summary>
+        /// Increment the number of events
+        /// </summary>
+        public void Incr()
+        {
+            Counted(Count + 1);
+        }
+
+        /// <summary>
+        /// Decrement the number of events
+        /// </summary>
+        public void Decr()
+        {
+            Counted(Count - 1);
+        }
+
+        /*
         /// <summary>
         ///  Red dot Inheritance relationship
         /// </summary>
@@ -47,12 +83,12 @@ namespace CatLib.RedDot.Node
         /// <summary>
         /// The main state is taken from master children
         /// </summary>
-        private RedDot masterChildren;
+        private ChildNode masterChildren;
 
         /// <summary>
         /// Triggered when the red dot status changed
         /// </summary>
-        private event Action<RedDot> onRedDotStatusChanage;
+        private event Action<ChildNode> onRedDotStatusChanage;
 
         /// <summary>
         /// A processor is set up to handle whether red dots should be passed to the parent
@@ -60,7 +96,6 @@ namespace CatLib.RedDot.Node
         /// <param name="processor">Processor for transfer</param>
         public void SetCustomizeTransfer(Func<IRedDot, bool> processor)
         {
-            
         }
 
         /// <summary>
@@ -78,15 +113,6 @@ namespace CatLib.RedDot.Node
         /// <param name="isActive">the bool said active status</param>
         public void Active(bool isActive)
         {
-            
-        }
-
-        /// <summary>
-        /// Recache the all status
-        /// </summary>
-        protected void Recache()
-        {
-
-        }
+        }*/
     }
 }

@@ -16,5 +16,16 @@ namespace CatLib.API.RedDot
     /// </summary>
     public interface IRedDot
     {
+        /// <summary>
+        /// Number of events
+        /// </summary>
+        int Count { get; }
+
+        /// <summary>
+        /// Get child red dot
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        IRedDot Child(string path);
     }
 }

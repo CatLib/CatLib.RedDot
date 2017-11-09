@@ -24,6 +24,6 @@ namespace CatLib.RedDot.Node
         /// <summary>
         /// Unable to mount child node again
         /// </summary>
-        Entity
+        Child
     }
 }

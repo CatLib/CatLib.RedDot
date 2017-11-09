@@ -14,30 +14,33 @@ using CatLib.API.RedDot;
 namespace CatLib.RedDot.Node
 {
     /// <summary>
-    /// Base of the node
+    /// Base node
     /// </summary>
     public abstract class BaseNode : IRedDot
     {
         /// <summary>
-        /// Get or Make Node with path
+        /// Number of events
+        /// </summary>
+        public abstract int Count { get; }
+
+        /// <summary>
+        /// Get or Make node with path
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        internal BaseNode Make(string[] path)
+        public virtual BaseNode Make(string[] path)
         {
-            if(path.Length <= 0)
-            {
-                return this;
-            }
-            return null;
+            return this;
         }
 
         /// <summary>
-        /// 
+        /// Find the child
         /// </summary>
-        internal static BaseNode MakeNode(NodeTypes type)
+        /// <param name="path"></param>
+        /// <returns></returns>
+        public virtual IRedDot Child(string path)
         {
-            return null;
+            return Make(RedDotManager.ToArrayPath(path));
         }
     }
 }

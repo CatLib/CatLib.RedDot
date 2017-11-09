@@ -51,22 +51,6 @@ namespace CatLib.RedDot.Node
             this.count = Math.Max(0, count);
         }
 
-        /// <summary>
-        /// Increment the number of events
-        /// </summary>
-        public override void Incr()
-        {
-            Counted(Count + 1);
-        }
-
-        /// <summary>
-        /// Decrement the number of events
-        /// </summary>
-        public override void Decr()
-        {
-            Counted(Count - 1);
-        }
-
         /*
         /// <summary>
         ///  Red dot Inheritance relationship

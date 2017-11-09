@@ -53,22 +53,6 @@ namespace CatLib.RedDot.Node
         }
 
         /// <summary>
-        /// Increment the number of events
-        /// </summary>
-        public override void Incr()
-        {
-
-        }
-
-        /// <summary>
-        /// Decrement the number of events
-        /// </summary>
-        public override void Decr()
-        {
-
-        }
-
-        /// <summary>
         /// Get or Make node with path
         /// </summary>
         /// <param name="path">Path array</param>

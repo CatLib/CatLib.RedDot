@@ -29,11 +29,6 @@ namespace CatLib.API.RedDot
         IRedDot Child(string path);
 
         /// <summary>
-        /// Clear the number of events
-        /// </summary>
-        void Clear();
-
-        /// <summary>
         /// Set the number of events
         /// </summary>
         /// <param name="count">Number of events</param>
@@ -48,5 +43,10 @@ namespace CatLib.API.RedDot
         /// Decrement the number of events
         /// </summary>
         void Decr();
+
+        /// <summary>
+        /// Clear the number of events
+        /// </summary>
+        void Clear();
     }
 }

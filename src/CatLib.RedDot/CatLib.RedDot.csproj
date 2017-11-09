@@ -39,12 +39,21 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dot.cs" />
+    <Compile Include="API\StyleTypes.cs" />
+    <Compile Include="API\TransferTypes.cs" />
+    <Compile Include="API\IRedDot.cs" />
+    <Compile Include="Node\BaseNode.cs" />
+    <Compile Include="Node\NodeTypes.cs" />
+    <Compile Include="Node\ParentNode.cs" />
+    <Compile Include="Node\ChildNode.cs" />
+    <Compile Include="Node\Builder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RedDotManager.cs" />
+    <Compile Include="Style\Numeric.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

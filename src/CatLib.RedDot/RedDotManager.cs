@@ -11,7 +11,6 @@
 
 using CatLib.API.RedDot;
 using CatLib.RedDot.Node;
-using System.Collections.Generic;
 
 namespace CatLib.RedDot
 {
@@ -21,48 +20,26 @@ namespace CatLib.RedDot
     public class RedDotManager
     {
         /// <summary>
-        /// Mapping for red dot
+        /// The root node
         /// </summary>
-        private IDictionary<string, BaseNode> mapping;
-
+        private BaseNode root;    
+    
         /// <summary>
         /// Make a new instance of the red dot manager
         /// </summary>
         public RedDotManager()
         {
-            mapping = new Dictionary<string, BaseNode>();
-        }
-
-        /// <summary>
-        /// Get the red dot with path
-        /// <para>Path support use dots to flatten a multi-dimensional associative array</para>
-        /// <para>When the path is empty, an exception is thrown</para>
-        /// </summary>
-        /// <param name="path"></param>
-        public IRedDot Get(string path)
-        {
-            return null;
+            root = new ParentNode();
         }
 
         /// <summary>
         /// Make the red dot with path
         /// <para>Path support use dots to flatten a multi-dimensional associative array</para>
         /// </summary>
-        /// <param name="path"></param>
+        /// <param name="path">string path</param>
         public IRedDot Make(string path)
         {
-            var arrayPath = Builder.ToArrayPath(path);
-            var key = Arr.Pop(ref arrayPath);
-
-            BaseNode result;
-            if(!mapping.TryGetValue(key, out result))
-            {
-                mapping[key] = Builder.MakeNode(arrayPath.Length <= 0 
-                                                  ? NodeTypes.Child 
-                                                  : NodeTypes.Parent);
-            }
-
-            return result.Make(arrayPath);
+            return root.Child(path);
         }
 
         /// <summary>
@@ -75,7 +52,7 @@ namespace CatLib.RedDot
         {
             get
             {
-                return Get(path);
+                return Make(path);
             }
         }
     }

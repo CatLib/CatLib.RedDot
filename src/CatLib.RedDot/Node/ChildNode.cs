@@ -21,7 +21,7 @@ namespace CatLib.RedDot.Node
         /// <summary>
         /// Number of events
         /// </summary>
-        private int count;
+        private int count = 0;
 
         /// <summary>
         /// Number of events
@@ -32,6 +32,14 @@ namespace CatLib.RedDot.Node
             {
                 return count;
             }
+        }
+
+        /// <summary>
+        /// Create new child node instance
+        /// </summary>
+        /// <param name="parent">Parent node</param>
+        public ChildNode(BaseNode parent) : base(parent)
+        {
         }
 
         /// <summary>

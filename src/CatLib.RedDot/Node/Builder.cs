@@ -20,23 +20,24 @@ namespace CatLib.RedDot.Node
         /// Make node
         /// </summary>
         /// <param name="type">What type of red dot needs to be built</param>
-        internal static BaseNode MakeNode(NodeTypes type)
+        /// <param name="parent">Parent node</param>
+        internal static BaseNode MakeNode(NodeTypes type, BaseNode parent = null)
         {
             switch (type)
             {
                 case NodeTypes.Child:
-                    return new ChildNode();
+                    return new ChildNode(parent);
                 case NodeTypes.Parent:
-                    return new ParentNode();
+                    return new ParentNode(parent);
             }
             throw new RuntimeException("Can not make node");
         }
 
         /// <summary>
-        /// 
+        /// Split a string into an array based on the dot and slash of the string
         /// </summary>
-        /// <param name="path"></param>
-        /// <returns></returns>
+        /// <param name="path">string path</param>
+        /// <returns>array</returns>
         internal static string[] ToArrayPath(string path)
         {
             var arrayPath = path.Split('.', '/');

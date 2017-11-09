@@ -19,16 +19,41 @@ namespace CatLib.RedDot.Node
     public abstract class BaseNode : IRedDot
     {
         /// <summary>
+        /// Parent node
+        /// </summary>
+        protected BaseNode parent;
+
+        /// <summary>
+        /// Parent node
+        /// </summary>
+        public IRedDot Parent
+        {
+            get
+            {
+                return parent;
+            }
+        }
+
+        /// <summary>
         /// Number of events
         /// </summary>
         public abstract int Count { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="parent"></param>
+        public BaseNode(BaseNode parent = null)
+        {
+            this.parent = parent;
+        }
 
         /// <summary>
         /// Get or Make node with path
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public virtual BaseNode Make(string[] path)
+        internal virtual BaseNode Make(string[] path)
         {
             return this;
         }
@@ -38,9 +63,9 @@ namespace CatLib.RedDot.Node
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public virtual IRedDot Child(string path)
+        public IRedDot Child(string path)
         {
-            return Make(RedDotManager.ToArrayPath(path));
+            return Make(Builder.ToArrayPath(path));
         }
     }
 }

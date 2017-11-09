@@ -9,7 +9,7 @@
  * Document: http://catlib.io/
  */
 
-using CatLib.API.RedDot;
+using System.Collections.Generic;
 
 namespace CatLib.RedDot.Node
 {
@@ -19,14 +19,18 @@ namespace CatLib.RedDot.Node
     public class ParentNode : BaseNode
     {
         /// <summary>
-        /// Parent node
+        /// Mapping for red dot
         /// </summary>
-        private ParentNode parent;
+        private IDictionary<string, BaseNode> children;
 
         /// <summary>
-        /// Children dot
+        /// Create new parent node instance
         /// </summary>
-        private SortSet<IRedDot, int> children;
+        /// <param name="parent">parent node</param>
+        public ParentNode(BaseNode parent = null) 
+            : base(parent)
+        {
+        }
 
         /// <summary>
         /// Number of events
@@ -40,12 +44,17 @@ namespace CatLib.RedDot.Node
         }
 
         /// <summary>
-        /// Find the child
+        /// Get or Make node with path
         /// </summary>
-        /// <param name="path"></param>
-        /// <returns></returns>
-        public override IRedDot Child(string path)
+        /// <param name="path">Path array</param>
+        /// <returns>node of the path</returns>
+        internal override BaseNode Make(string[] path)
         {
+            if(path == null || path.Length <= 0)
+            {
+                return this;
+            }
+
             return this;
         }
     }

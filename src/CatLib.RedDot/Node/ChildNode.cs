@@ -45,7 +45,7 @@ namespace CatLib.RedDot.Node
         /// <summary>
         /// Set the number of events
         /// </summary>
-        /// <param name="count">number of events</param>
+        /// <param name="count">Number of events</param>
         public void Counted(int count)
         {
             count = Math.Max(0, count);

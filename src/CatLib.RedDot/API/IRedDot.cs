@@ -22,10 +22,26 @@ namespace CatLib.API.RedDot
         int Count { get; }
 
         /// <summary>
-        /// Get child red dot
+        /// According to the path to get the red dot
         /// </summary>
-        /// <param name="path"></param>
-        /// <returns></returns>
+        /// <param name="path">String path</param>
+        /// <returns>Red dot</returns>
         IRedDot Child(string path);
+
+        /// <summary>
+        /// Set the number of events
+        /// </summary>
+        /// <param name="count">Number of events</param>
+        void Counted(int count);
+
+        /// <summary>
+        /// Increment the number of events
+        /// </summary>
+        void Incr();
+
+        /// <summary>
+        /// Decrement the number of events
+        /// </summary>
+        void Decr();
     }
 }

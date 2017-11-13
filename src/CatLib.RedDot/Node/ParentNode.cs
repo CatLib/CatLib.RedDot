@@ -30,6 +30,7 @@ namespace CatLib.RedDot.Node
         public ParentNode(BaseNode parent = null) 
             : base(parent)
         {
+            children = new Dictionary<string, BaseNode>();
         }
 
         /// <summary>
@@ -64,7 +65,22 @@ namespace CatLib.RedDot.Node
                 return this;
             }
 
-            return this;
+            var key = Arr.Pop(ref path);
+            BaseNode node;
+
+            if (!children.TryGetValue(key, out node))
+            {
+                children[key] = node = Builder.MakeNode((path.Length <= 0) ? NodeTypes.Child : NodeTypes.Parent, this);
+            }
+
+            return node.Make(path);
+        }
+
+        /// <summary>
+        /// 重新缓存
+        /// </summary>
+        protected override void Recache()
+        {
         }
     }
 }

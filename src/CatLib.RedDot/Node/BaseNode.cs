@@ -9,6 +9,7 @@
  * Document: http://catlib.io/
  */
 
+using System.Net.Cache;
 using CatLib.API.RedDot;
 
 namespace CatLib.RedDot.Node
@@ -96,6 +97,13 @@ namespace CatLib.RedDot.Node
         public IRedDot Child(string path)
         {
             return Make(Builder.ToArrayPath(path));
+        }
+
+        /// <summary>
+        /// 重新缓存
+        /// </summary>
+        protected virtual void Recache()
+        {
         }
     }
 }

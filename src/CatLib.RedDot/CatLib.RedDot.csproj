@@ -39,6 +39,7 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="API\IOptions.cs" />
     <Compile Include="API\StyleTypes.cs" />
     <Compile Include="API\TransferTypes.cs" />
     <Compile Include="API\IRedDot.cs" />

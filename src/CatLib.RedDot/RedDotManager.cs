@@ -22,7 +22,7 @@ namespace CatLib.RedDot
         /// <summary>
         /// The root node
         /// </summary>
-        private BaseNode root;    
+        private readonly BaseNode root;    
     
         /// <summary>
         /// Make a new instance of the red dot manager

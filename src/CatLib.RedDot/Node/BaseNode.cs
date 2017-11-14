@@ -9,7 +9,6 @@
  * Document: http://catlib.io/
  */
 
-using System.Net.Cache;
 using CatLib.API.RedDot;
 
 namespace CatLib.RedDot.Node
@@ -44,7 +43,7 @@ namespace CatLib.RedDot.Node
         /// 
         /// </summary>
         /// <param name="parent"></param>
-        public BaseNode(BaseNode parent = null)
+        protected BaseNode(BaseNode parent = null)
         {
             this.parent = parent;
         }

@@ -21,7 +21,7 @@ namespace CatLib.RedDot.Node
         /// <summary>
         /// Mapping for red dot
         /// </summary>
-        private IDictionary<string, BaseNode> children;
+        private readonly IDictionary<string, BaseNode> children;
 
         /// <summary>
         /// Create new parent node instance

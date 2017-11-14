@@ -49,10 +49,10 @@ namespace CatLib.RedDot.Node
         }
 
         /// <summary>
-        /// Set node style
+        /// Customize red dot
         /// </summary>
         /// <param name="style">Style</param>
-        public abstract void SetStyle(StyleTypes style);
+        public abstract IRedDot Extend(IStyle style);
 
         #region Numbice interface
         /// <summary>

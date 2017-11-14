@@ -9,6 +9,8 @@
  * Document: http://catlib.io/
  */
 
+using CatLib.API.RedDot;
+
 namespace CatLib.RedDot.Style
 {
     /// <summary>
@@ -29,6 +31,34 @@ namespace CatLib.RedDot.Style
             get
             {
                 return count;
+            }
+        }
+
+        /// <summary>
+        /// When set the style payload
+        /// </summary>
+        /// <param name="payload"></param>
+        public void Set(object payload)
+        {
+            Counted((int)payload);
+        }
+
+        /// <summary>
+        /// Get settled payload
+        /// </summary>
+        public object Payload
+        {
+            get { return count; }
+        }
+
+        /// <summary>
+        /// Priority with display level (Small priority)
+        /// </summary>
+        public int Priority
+        {
+            get
+            {
+                return (int)StyleTypes.Numeric;
             }
         }
 

@@ -9,7 +9,7 @@
  * Document: http://catlib.io/
  */
 
-namespace CatLib.API.RedDot
+namespace CatLib.RedDot.Style
 {
     /// <summary>
     /// How does red dot style 

@@ -17,9 +17,9 @@ namespace CatLib.API.RedDot
     public interface IRedDot
     {
         /// <summary>
-        /// Number of events
+        /// Red dot payload
         /// </summary>
-        int Count { get; }
+        object Payload { get; }
 
         /// <summary>
         /// According to the path to get the red dot
@@ -27,6 +27,18 @@ namespace CatLib.API.RedDot
         /// <param name="path">String path</param>
         /// <returns>Red dot</returns>
         IRedDot Child(string path);
+
+        /// <summary>
+        /// Customize red dot
+        /// </summary>
+        /// <param name="style">Style</param>
+        IRedDot Extend(IStyle style);
+
+        /// <summary>
+        /// Set payload（We will automatically adjust the red dot according to the load）
+        /// </summary>
+        /// <param name="payload">Set payload</param>
+        void Set(object payload);
 
         /// <summary>
         /// Set the number of events

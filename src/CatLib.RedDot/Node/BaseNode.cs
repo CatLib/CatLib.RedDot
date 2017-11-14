@@ -49,6 +49,13 @@ namespace CatLib.RedDot.Node
         }
 
         /// <summary>
+        /// Set node style
+        /// </summary>
+        /// <param name="style">Style</param>
+        public abstract void SetStyle(StyleTypes style);
+
+        #region Numbice interface
+        /// <summary>
         /// Set the number of events
         /// </summary>
         /// <param name="count">Number of events</param>
@@ -77,6 +84,7 @@ namespace CatLib.RedDot.Node
         {
             Counted(0);
         }
+        #endregion
 
         /// <summary>
         /// Get or Make node with path

@@ -24,6 +24,11 @@ namespace CatLib.RedDot.Node
         protected BaseNode parent;
 
         /// <summary>
+        /// Dot style
+        /// </summary>
+        protected IStyle style;
+
+        /// <summary>
         /// Parent node
         /// </summary>
         public IRedDot Parent

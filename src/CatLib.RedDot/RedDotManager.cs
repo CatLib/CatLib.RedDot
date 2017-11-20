@@ -11,6 +11,7 @@
 
 using CatLib.API.RedDot;
 using CatLib.RedDot.Node;
+using System;
 
 namespace CatLib.RedDot
 {
@@ -22,7 +23,7 @@ namespace CatLib.RedDot
         /// <summary>
         /// The root node
         /// </summary>
-        private readonly BaseNode root;    
+        private readonly BaseNode root;
     
         /// <summary>
         /// Make a new instance of the red dot manager
@@ -30,6 +31,16 @@ namespace CatLib.RedDot
         public RedDotManager()
         {
             root = new ParentNode();
+        }
+
+        /// <summary>
+        /// Customize red dot
+        /// </summary>
+        /// <param name="type">Resolved style</param>
+        /// <param name="styleResolved">Style resolved</param>
+        public void Extend(Type type, Func<Type, IStyle> styleResolved)
+        {
+
         }
 
         /// <summary>

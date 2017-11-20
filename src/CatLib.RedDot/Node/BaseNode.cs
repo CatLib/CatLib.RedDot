@@ -10,13 +10,14 @@
  */
 
 using CatLib.API.RedDot;
+using System;
 
 namespace CatLib.RedDot.Node
 {
     /// <summary>
     /// Base node
     /// </summary>
-    public abstract class BaseNode : IRedDot
+    public class BaseNode : IRedDot
     {
         /// <summary>
         /// Parent node
@@ -42,22 +43,28 @@ namespace CatLib.RedDot.Node
         /// <summary>
         /// Number of events
         /// </summary>
-        public abstract int Count { get; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="parent"></param>
-        protected BaseNode(BaseNode parent = null)
+        public int Count
         {
-            this.parent = parent;
+            get
+            {
+                return (int)style.Payload;
+            }
         }
 
         /// <summary>
-        /// Customize red dot
+        /// Style resolved
         /// </summary>
-        /// <param name="style">Style</param>
-        public abstract IRedDot Extend(IStyle style);
+        private Func<Type, IStyle> styleResolved;
+
+        /// <summary>
+        /// Created new base node instance
+        /// </summary>
+        /// <param name="styleResolved">Style resolved</param>
+        /// <param name="parent">parent node</param>
+        public BaseNode(Func<Type, IStyle> styleResolved, BaseNode parent = null)
+        {
+            this.parent = parent;
+        }
 
         #region Numbice interface
         /// <summary>

@@ -10,8 +10,9 @@
  */
 
 using System;
+using CatLib.API.RedDot;
 
-namespace CatLib.API.RedDot
+namespace CatLib.RedDot.Style
 {
     /// <summary>
     /// Style interface
@@ -35,9 +36,9 @@ namespace CatLib.API.RedDot
         void Clear();
 
         /// <summary>
-        /// Priority with display level (Small priority)
+        /// Style Type (Small priority)
         /// </summary>
-        int Priority { get; }
+        StyleTypes StyleType { get; }
 
         /// <summary>
         /// On payload change

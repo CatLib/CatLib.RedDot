@@ -10,25 +10,26 @@
  */
 
 using CatLib.API.RedDot;
-using System;
+using CatLib.RedDot.Style;
 using System.Collections.Generic;
+using System;
 
 namespace CatLib.RedDot.Node
 {
     /// <summary>
     /// Base node
     /// </summary>
-    public class BaseNode : IRedDot
+    public sealed class BaseNode : IRedDot
     {
         /// <summary>
         /// Parent node
         /// </summary>
-        protected BaseNode parent;
+        private BaseNode parent;
 
         /// <summary>
         /// Dot style
         /// </summary>
-        protected IStyle style;
+        private IStyle style;
 
         /// <summary>
         /// Parent node
@@ -42,6 +43,11 @@ namespace CatLib.RedDot.Node
         }
 
         /// <summary>
+        /// Transfer
+        /// </summary>
+        private Predicate<bool> transfer;
+
+        /// <summary>
         /// Number of events
         /// </summary>
         public int Count
@@ -53,11 +59,6 @@ namespace CatLib.RedDot.Node
         }
 
         /// <summary>
-        /// Style resolved
-        /// </summary>
-        private Func<Type, IStyle> styleResolved;
-
-        /// <summary>
         /// Mapping for red dot
         /// </summary>
         private readonly IDictionary<string, BaseNode> children;
@@ -65,39 +66,28 @@ namespace CatLib.RedDot.Node
         /// <summary>
         /// Created new base node instance
         /// </summary>
-        /// <param name="styleResolved">Style resolved</param>
         /// <param name="parent">parent node</param>
-        public BaseNode(Func<Type, IStyle> styleResolved, BaseNode parent = null)
+        public BaseNode(BaseNode parent = null)
         {
-            this.styleResolved = styleResolved;
             this.parent = parent;
             children = new Dictionary<string, BaseNode>();
         }
 
         #region Numbice interface
         /// <summary>
-        /// Set the number of events
-        /// </summary>
-        /// <param name="count">Number of events</param>
-        public void Counted(int count)
-        {
-            style.Set(Math.Max(0, count));
-        }
-
-        /// <summary>
         /// Increment the number of events
         /// </summary>
-        public virtual void Incr()
+        public void Incr(object payload)
         {
-            Counted(Count + 1);
+            Set(Count + 1);
         }
 
         /// <summary>
         /// Decrement the number of events
         /// </summary>
-        public virtual void Decr()
+        public void Decr()
         {
-            Counted(Count - 1);
+            Set(Count - 1);
         }
         #endregion
 
@@ -113,32 +103,9 @@ namespace CatLib.RedDot.Node
         /// <summary>
         /// Clear the dot status
         /// </summary>
-        public virtual void Clear()
+        public void Clear()
         {
             style.Clear();
-        }
-
-        /// <summary>
-        /// Get or Make node with path
-        /// </summary>
-        /// <param name="path"></param>
-        /// <returns></returns>
-        internal virtual BaseNode Make(string[] path)
-        {
-            if (path == null || path.Length <= 0)
-            {
-                return this;
-            }
-
-            var key = Arr.Pop(ref path);
-            BaseNode node;
-
-            if (!children.TryGetValue(key, out node))
-            {
-                children[key] = node = Builder.MakeNode((path.Length <= 0) ? NodeTypes.Child : NodeTypes.Parent, this);
-            }
-
-            return node.Make(path);
         }
 
         /// <summary>
@@ -152,9 +119,32 @@ namespace CatLib.RedDot.Node
         }
 
         /// <summary>
+        /// Get or Make node with path
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        internal BaseNode Make(string[] path)
+        {
+            if (path == null || path.Length <= 0)
+            {
+                return this;
+            }
+
+            var key = Arr.Pop(ref path);
+            BaseNode node;
+
+            if (!children.TryGetValue(key, out node))
+            {
+                children[key] = node = new BaseNode(this);
+            }
+
+            return node.Make(path);
+        }
+
+        /// <summary>
         /// 重新缓存
         /// </summary>
-        protected virtual void Recache()
+        private void Recache()
         {
         }
     }

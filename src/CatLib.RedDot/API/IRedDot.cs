@@ -9,6 +9,8 @@
  * Document: http://catlib.io/
  */
 
+using System;
+
 namespace CatLib.API.RedDot
 {
     /// <summary>
@@ -20,6 +22,11 @@ namespace CatLib.API.RedDot
         /// Red dot payload
         /// </summary>
         object Payload { get; }
+
+        /// <summary>
+        /// Style Type
+        /// </summary>
+        StyleTypes StyleType { get; }
 
         /// <summary>
         /// According to the path to get the red dot
@@ -34,6 +41,12 @@ namespace CatLib.API.RedDot
         /// <param name="path">String path</param>
         /// <returns>Red dot</returns>
         IRedDot this[string path] { get; }
+
+        /// <summary>
+        /// Is Transfer
+        /// </summary>
+        /// <param name="transfer">is</param>
+        void Transfer(Predicate<bool> transfer);
 
         /// <summary>
         /// Set payload（We will automatically adjust the red dot according to the load）

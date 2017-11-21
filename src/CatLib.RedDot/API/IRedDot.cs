@@ -29,10 +29,11 @@ namespace CatLib.API.RedDot
         IRedDot Child(string path);
 
         /// <summary>
-        /// Customize red dot
+        /// According to the path to get the red dot
         /// </summary>
-        /// <param name="style">Style</param>
-        IRedDot Extend(IStyle style);
+        /// <param name="path">String path</param>
+        /// <returns>Red dot</returns>
+        IRedDot this[string path] { get; }
 
         /// <summary>
         /// Set payload（We will automatically adjust the red dot according to the load）
@@ -41,10 +42,10 @@ namespace CatLib.API.RedDot
         void Set(object payload);
 
         /// <summary>
-        /// Set the number of events
+        /// Clear dot style status
         /// </summary>
-        /// <param name="count">Number of events</param>
-        void Counted(int count);
+        /// <param name="halt">Only clear the top</param>
+        void Clear(bool halt = false);
 
         /// <summary>
         /// Increment the number of events
@@ -55,10 +56,5 @@ namespace CatLib.API.RedDot
         /// Decrement the number of events
         /// </summary>
         void Decr();
-
-        /// <summary>
-        /// Clear the number of events
-        /// </summary>
-        void Clear();
     }
 }

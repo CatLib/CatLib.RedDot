@@ -11,6 +11,7 @@
 
 using CatLib.API.RedDot;
 using System;
+using System.Collections.Generic;
 
 namespace CatLib.RedDot.Node
 {
@@ -57,13 +58,20 @@ namespace CatLib.RedDot.Node
         private Func<Type, IStyle> styleResolved;
 
         /// <summary>
+        /// Mapping for red dot
+        /// </summary>
+        private readonly IDictionary<string, BaseNode> children;
+
+        /// <summary>
         /// Created new base node instance
         /// </summary>
         /// <param name="styleResolved">Style resolved</param>
         /// <param name="parent">parent node</param>
         public BaseNode(Func<Type, IStyle> styleResolved, BaseNode parent = null)
         {
+            this.styleResolved = styleResolved;
             this.parent = parent;
+            children = new Dictionary<string, BaseNode>();
         }
 
         #region Numbice interface
@@ -71,7 +79,10 @@ namespace CatLib.RedDot.Node
         /// Set the number of events
         /// </summary>
         /// <param name="count">Number of events</param>
-        public abstract void Counted(int count);
+        public void Counted(int count)
+        {
+            style.Set(Math.Max(0, count));
+        }
 
         /// <summary>
         /// Increment the number of events
@@ -88,15 +99,24 @@ namespace CatLib.RedDot.Node
         {
             Counted(Count - 1);
         }
+        #endregion
 
         /// <summary>
-        /// Clear the number of events
+        /// Set payload（We will automatically adjust the red dot according to the load）
+        /// </summary>
+        /// <param name="payload">Set payload</param>
+        public void Set(object payload)
+        {
+            style.Set(payload);
+        }
+
+        /// <summary>
+        /// Clear the dot status
         /// </summary>
         public virtual void Clear()
         {
-            Counted(0);
+            style.Clear();
         }
-        #endregion
 
         /// <summary>
         /// Get or Make node with path
@@ -105,7 +125,20 @@ namespace CatLib.RedDot.Node
         /// <returns></returns>
         internal virtual BaseNode Make(string[] path)
         {
-            return this;
+            if (path == null || path.Length <= 0)
+            {
+                return this;
+            }
+
+            var key = Arr.Pop(ref path);
+            BaseNode node;
+
+            if (!children.TryGetValue(key, out node))
+            {
+                children[key] = node = Builder.MakeNode((path.Length <= 0) ? NodeTypes.Child : NodeTypes.Parent, this);
+            }
+
+            return node.Make(path);
         }
 
         /// <summary>

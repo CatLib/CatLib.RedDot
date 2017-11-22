@@ -14,42 +14,57 @@ using System;
 namespace CatLib.API.RedDot
 {
     /// <summary>
-    /// Red dot interface
+    /// 小红点
     /// </summary>
     public interface IRedDot
     {
         /// <summary>
-        /// Red dot payload
+        /// 载荷，表示当前红点应该显示什么数据
+        /// <para>如果状态为<code>StyleTypes.Normal</code>那么返回值为<code>bool</code></para>
+        /// <para>如果状态为<code>StyleTypes.Numeric</code>那么返回值为<code>int</code></para>
+        /// <para>如果状态为<code>StyleTypes.Text</code>那么返回值为<code>string</code></para>
+        /// <para>如果状态为<code>StyleTypes.Customize</code>那么返回值为<code>object</code>(载荷为用户设定值)</para>
         /// </summary>
         object Payload { get; }
 
         /// <summary>
-        /// Style Type
+        /// 红点样式状态
         /// </summary>
         StyleTypes StyleType { get; }
 
         /// <summary>
-        /// According to the path to get the red dot
+        /// 获取子红点
         /// </summary>
-        /// <param name="path">String path</param>
-        /// <returns>Red dot</returns>
+        /// <param name="path">子红点的路径,允许使用<b>/</b>或者<b>.</b>对深度进行分割</param>
+        /// <returns>子红点</returns>
         IRedDot Child(string path);
 
         /// <summary>
-        /// According to the path to get the red dot
+        /// 获取子红点
         /// </summary>
-        /// <param name="path">String path</param>
-        /// <returns>Red dot</returns>
+        /// <param name="path">子红点的路径,允许使用<b>/</b>或者<b>.</b>对深度进行分割</param>
+        /// <returns>子红点</returns>
         IRedDot this[string path] { get; }
 
         /// <summary>
-        /// Is Transfer
+        /// 设定一个回调，回调结果决定是否可以将当前红点样式状态传递到父级红点
         /// </summary>
-        /// <param name="transfer">is</param>
-        void Transfer(Predicate<bool> transfer);
+        /// <param name="transfer">返回值决定是否可以将红点样式状态传递到父级</param>
+        void Transfer(Predicate<IRedDot> transfer);
 
         /// <summary>
-        /// Set payload（We will automatically adjust the red dot according to the load）
+        /// 设定是否可以将红点样式状态传递到父级
+        /// <para>默认值为:<code>true</code>(传递到父级)</para>
+        /// </summary>
+        /// <param name="transfer">是否可以传递到父级</param>
+        void Transfer(bool transfer);
+
+        /// <summary>
+        /// 设定载荷，我们会自动根据载荷类型选择红点样式状态
+        /// <para>如果传入值为<code>bool</code>，则样式为一个标准红点(<code>StyleTypes.Normal</code>)</para>
+        /// <para>如果传入值为<code>int</code>，则样式为一个数字红点(<code>StyleTypes.Numeric</code>)</para>
+        /// <para>如果传入值为<code>string</code>，则样式为一个文字红点(<code>StyleTypes.Text</code>)</para>
+        /// <para>如果传入值为其他例外值，则样式为一个自定义红点(<code>StyleTypes.Customize</code>)</para>
         /// </summary>
         /// <param name="payload">Set payload</param>
         void Set(object payload);
